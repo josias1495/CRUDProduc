@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:clase="clr-namespace:CRUDProduc.ViewModel"
+             x:Class="CRUDProduc.View.InicioPage"
+             >
+    <ContentPage.BindingContext>
+        <clase:InicioViewModel></clase:InicioViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0">
+            <StackLayout>
+                <Label Text="DATOS DE CATEGORIA:"></Label>
+                <Label Text="Category Name "></Label>
+                <Entry Text="{Binding CategoriaF}"></Entry>
+                <Entry Text="{Binding DescripcionF}"></Entry>
+                <Label Text="DATOS DE LOS PRODUCTOS:"></Label>
+                <StackLayout Orientation="Horizontal" >
+                    <Entry Text="{Binding NombreProductoF}" WidthRequest="150"></Entry>
+                    <Button Text="Agregar" Command="{Binding AgregarCommand}" CornerRadius="50" HorizontalOptions="End"/>
+                </StackLayout>
+                
+                
+            </StackLayout>
+            <StackLayout>
+
+                <ListView ItemsSource="{Binding Producto}" HasUnevenRows="True">
+
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding NombreProducto}"></TextCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                <Button Text="Guardar" Command="{Binding GuardarCommand}" ></Button>
+                <Button Text="Ver" Command="{Binding VerCommand}"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
